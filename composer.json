@@ -1,0 +1,49 @@
+{
+    "name": "dongrim/laravel-localization",
+    "description": "Easy localization for Laravel",
+    "keywords": ["localization", "laravel", "php"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yaroslav Fedan",
+            "email": "yaroslav.fd@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4.0",
+        "laravel/framework": "~6.0||^7.0||^8.0||^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dongrim\\LaravelLocalization\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dongrim\\LaravelLocalization\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.24",
+        "phpunit/phpunit": "9.5.*",
+        "laravel/legacy-factories" : "1.x"
+    },
+    "extra" :{
+        "laravel": {
+            "providers": [
+                "Dongrim\\LaravelLocalization\\LaravelLocalizationServiceProvider"
+            ],
+            "aliases": {
+                "Localization": "Dongrim\\LaravelLocalization\\Facades\\Localization"
+            }
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
