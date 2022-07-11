@@ -8,7 +8,7 @@ class CreateLocalizationExamplesTable extends Migration
 {
     /**
      * Run the migrations.
-     * 
+     *
      * @return void
      */
     public function up(): void
@@ -26,7 +26,7 @@ class CreateLocalizationExamplesTable extends Migration
 
     /**
      * Reverse the migrations.
-     * 
+     *
      * @return void
      */
     public function down(): void

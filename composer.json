@@ -29,7 +29,8 @@
     "require-dev": {
         "orchestra/testbench": "^6.24",
         "phpunit/phpunit": "9.5.*",
-        "laravel/legacy-factories" : "1.x"
+        "laravel/legacy-factories" : "1.x",
+        "laravel/pint": "^0.2.3"
     },
     "extra" :{
         "laravel": {

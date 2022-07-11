@@ -18,5 +18,5 @@ abstract class Driver
      * Receipt the collection available locales
      * @return Collection
      */
-    public abstract function getLocales(): Collection;
+    abstract public function getLocales(): Collection;
 }

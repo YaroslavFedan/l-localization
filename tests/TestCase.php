@@ -2,8 +2,6 @@
 
 namespace Dongrim\LaravelLocalization\Tests;
 
-use Mockery;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 
 use Illuminate\Support\Facades\Route;
@@ -63,7 +61,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
         string $anotherPrefix = '',
         string $controllerAction = ''
     ): void {
-
         Route::group([
             'prefix' => self::prefix($locale, $anotherPrefix),
         ], function () use ($controllerAction) {
@@ -73,7 +70,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
         });
     }
 
-    protected function prefix($url, $anotherPrefix = '')
+    protected static function prefix($url, $anotherPrefix = '')
     {
         $request = Request::create($url);
         app()->instance('request', $request);
@@ -85,11 +82,13 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         $fullUrl = '';
 
-        if ($this->hideDefaultLocaleInURL)
+        if ($this->hideDefaultLocaleInURL) {
             $locale = ($locale !== $this->defaultLocale) ? $locale : "";
+        }
 
-        if (!blank($locale))
+        if (!blank($locale)) {
             $fullUrl .= $locale;
+        }
 
         if (!blank($anotherPrefix)) {
             $fullUrl .= DIRECTORY_SEPARATOR . $anotherPrefix;

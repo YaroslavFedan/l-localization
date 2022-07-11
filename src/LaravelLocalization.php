@@ -2,11 +2,9 @@
 
 namespace Dongrim\LaravelLocalization;
 
-
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use Dongrim\LaravelLocalization\Drivers\Driver;
-
 
 class LaravelLocalization
 {
@@ -99,9 +97,9 @@ class LaravelLocalization
 
     /**
      * Set Prefix localization
-     * 
+     *
      * @param string $anotherPrefix
-     * 
+     *
      * @return string
      */
     public function prefix($anotherPrefix = ''): string
@@ -139,8 +137,9 @@ class LaravelLocalization
             })->first();
         }
 
-        if (blank($locale))
+        if (blank($locale)) {
             $locale = $this->appLocale;
+        }
 
         $this->defaultLocale = $this->localesMapping($locale);
     }
@@ -148,9 +147,9 @@ class LaravelLocalization
 
     /**
      * Replacing locale names with the name from localesMapping
-     * 
+     *
      * @param string $locales
-     * 
+     *
      * @return string
      */
     public function localesMapping(string $locale): string
@@ -163,7 +162,7 @@ class LaravelLocalization
 
 
     /**
-     * 
+     *
      * @return string
      */
     public function getLocalePrefix(): string
@@ -174,7 +173,7 @@ class LaravelLocalization
 
         if ($this->hideDefaultLocaleInURL && (bool)$locales->count()) {
             // remove the default language from the collection (so that the urls do not contain the default language)
-            if (($key = $locales->search($this->defaultLocale)) !== FALSE) {
+            if (($key = $locales->search($this->defaultLocale)) !== false) {
                 $locales->forget($key);
             }
         }
@@ -189,7 +188,7 @@ class LaravelLocalization
 
     /**
      * Get an instance of the set driver.
-     * 
+     *
      * @return Driver
      */
     protected function driver()
@@ -198,6 +197,6 @@ class LaravelLocalization
 
         $class = "Dongrim\LaravelLocalization\Drivers\\" . $driver . "Driver";
 
-        return new $class;
+        return new $class();
     }
 }

@@ -40,7 +40,7 @@ class MiddlewareTest extends TestCase
         foreach (locales()  as $locale) {
             self::makeAnyRoute($locale);
             foreach (['get', 'post', 'put', 'patch', 'delete', 'options'] as $method) {
-                $response = $this->call($method,  $this->getFullUrl($locale));
+                $response = $this->call($method, $this->getFullUrl($locale));
 
                 $this->assertEquals(
                     $locale,
@@ -62,7 +62,7 @@ class MiddlewareTest extends TestCase
             self::makeAnyRoute($locale, $anotherPrefix);
 
             foreach (['get', 'post', 'put', 'patch', 'delete', 'options'] as $method) {
-                $response = $this->call($method,  $this->getFullUrl($locale, $anotherPrefix));
+                $response = $this->call($method, $this->getFullUrl($locale, $anotherPrefix));
 
                 $this->assertEquals(
                     $locale,
@@ -111,7 +111,7 @@ class MiddlewareTest extends TestCase
             session([$this->sessionLocaleKey => $locale]);
 
             foreach (['get', 'post', 'put', 'patch', 'delete', 'options'] as $method) {
-                $response = $this->call($method,  $this->getFullUrl($locale, $anotherPrefix, $controllerAction));
+                $response = $this->call($method, $this->getFullUrl($locale, $anotherPrefix, $controllerAction));
 
                 $this->assertEquals(
                     $locale,

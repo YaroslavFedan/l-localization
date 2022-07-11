@@ -3,11 +3,9 @@
 namespace Dongrim\LaravelLocalization;
 
 use Illuminate\Support\ServiceProvider;
-use Dongrim\LaravelLocalization\LaravelLocalization;
 
 class LaravelLocalizationServiceProvider extends ServiceProvider
 {
-
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {
@@ -34,7 +32,7 @@ class LaravelLocalizationServiceProvider extends ServiceProvider
         $this->registerFacades();
     }
 
-    protected function registerFacades()
+    protected function registerFacades(): void
     {
         $this->app->singleton("Localization", function ($app) {
             return new LaravelLocalization();

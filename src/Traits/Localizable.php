@@ -2,7 +2,6 @@
 
 namespace Dongrim\LaravelLocalization\Traits;
 
-
 use Illuminate\Database\Eloquent\Builder;
 
 trait Localizable

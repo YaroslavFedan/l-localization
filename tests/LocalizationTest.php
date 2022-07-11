@@ -2,11 +2,9 @@
 
 namespace Dongrim\LaravelLocalization\Tests\Feature;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Config;
 use Dongrim\LaravelLocalization\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Dongrim\LaravelLocalization\Facades\Localization;
 use Dongrim\LaravelLocalization\Tests\Models\LocalizationExample;
 use Dongrim\LaravelLocalization\Tests\database\seeds\LocalizationExampleSeeder;
 
@@ -104,7 +102,7 @@ class LocalizationTest extends TestCase
             $fullUrl = $this->getFullUrl($locale);
             $prefix = $this->prefix($fullUrl);
 
-            $this->assertEquals($fullUrl,  $prefix);
+            $this->assertEquals($fullUrl, $prefix);
         }
     }
 
@@ -113,11 +111,10 @@ class LocalizationTest extends TestCase
     {
         $paths = ['/', '/someController', 'someController/someAction'];
         foreach ($paths  as $path) {
-
             self::makeAnyRoute('', '', $path);
 
             foreach (['get', 'post', 'put', 'patch', 'delete', 'options'] as $method) {
-                $response = $this->call($method,  $path);
+                $response = $this->call($method, $path);
                 $this->assertSame(
                     200,
                     $response->getStatusCode(),
@@ -134,11 +131,10 @@ class LocalizationTest extends TestCase
         $controllerAction = '/';
 
         foreach (locales()  as $locale) {
-
             self::makeAnyRoute($locale, '', $controllerAction);
 
             foreach (['get', 'post', 'put', 'patch', 'delete', 'options'] as $method) {
-                $response = $this->call($method,  $controllerAction);
+                $response = $this->call($method, $controllerAction);
                 $this->assertSame(
                     200,
                     $response->getStatusCode(),
@@ -156,7 +152,6 @@ class LocalizationTest extends TestCase
         $anotherPrefix = 'admin';
 
         foreach (locales() as $locale) {
-
             $fullUrl = $this->getFullUrl($locale, $anotherPrefix);
             $prefix = $this->prefix($fullUrl, $anotherPrefix);
 
@@ -172,11 +167,10 @@ class LocalizationTest extends TestCase
         $anotherPrefix = 'admin';
 
         foreach (locales() as $locale) {
-
             self::makeAnyRoute($locale, $anotherPrefix, $controllerAction);
 
             foreach (['get', 'post', 'put', 'patch', 'delete', 'options'] as $method) {
-                $response = $this->call($method,  $this->getFullUrl($locale, $anotherPrefix, $controllerAction));
+                $response = $this->call($method, $this->getFullUrl($locale, $anotherPrefix, $controllerAction));
                 $this->assertSame(
                     200,
                     $response->getStatusCode(),
@@ -194,11 +188,10 @@ class LocalizationTest extends TestCase
         $controllerAction = 'someController/someAction';
 
         foreach (locales() as $locale) {
-
             self::makeAnyRoute($locale, $anotherPrefix, $controllerAction);
 
             foreach (['get', 'post', 'put', 'patch', 'delete', 'options'] as $method) {
-                $response = $this->call($method,  $this->getFullUrl($locale, $anotherPrefix, $controllerAction));
+                $response = $this->call($method, $this->getFullUrl($locale, $anotherPrefix, $controllerAction));
                 $this->assertSame(
                     200,
                     $response->getStatusCode(),
@@ -216,11 +209,10 @@ class LocalizationTest extends TestCase
         $controllerAction = 'someController/someAction';
 
         foreach (locales() as $locale) {
-
             self::makeAnyRoute($locale, $anotherPrefix, $controllerAction);
 
             foreach (['get', 'post', 'put', 'patch', 'delete', 'options'] as $method) {
-                $response = $this->call($method,  $this->getFullUrl($locale, $anotherPrefix, $controllerAction));
+                $response = $this->call($method, $this->getFullUrl($locale, $anotherPrefix, $controllerAction));
                 $this->assertSame(
                     200,
                     $response->getStatusCode(),
