@@ -5,6 +5,7 @@ namespace Dongrim\LaravelLocalization;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
+use Dongrim\LaravelLocalization\Drivers\Driver;
 
 
 class LaravelLocalization
@@ -186,6 +187,11 @@ class LaravelLocalization
     }
 
 
+    /**
+     * Get an instance of the set driver.
+     * 
+     * @return Driver
+     */
     protected function driver()
     {
         $driver = Str::title($this->driver);
